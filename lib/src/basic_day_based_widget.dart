@@ -345,6 +345,54 @@ class _DayCell extends StatelessWidget {
       ),
     );
 
+    if (dayType != DayType.middle) {
+      dayWidget = Row(
+        children: [
+          Spacer(),
+          AspectRatio(
+            aspectRatio: 1,
+            child: dayWidget,
+          ),
+          Spacer(),
+        ],
+      );
+    }
+
+    var rangePickerIncludedDayDecoration = BoxDecoration(
+      color: decoration?.color?.withOpacity(0.1),
+    );
+
+    if (dayType == DayType.start) {
+      dayWidget = Stack(
+        children: [
+          Row(children: [
+            const Spacer(),
+            Expanded(
+              child: Container(decoration: rangePickerIncludedDayDecoration),
+            ),
+          ]),
+          dayWidget,
+        ],
+      );
+    } else if (dayType == DayType.end) {
+      dayWidget = Stack(
+        children: [
+          Row(children: [
+            Expanded(
+              child: Container(decoration: rangePickerIncludedDayDecoration),
+            ),
+            const Spacer(),
+          ]),
+          dayWidget,
+        ],
+      );
+    }
+
+    dayWidget = Padding(
+      padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 2),
+      child: dayWidget,
+    );
+
     return dayWidget;
   }
 

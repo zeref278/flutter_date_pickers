@@ -71,7 +71,7 @@ class DatePickerLayoutSettings {
   /// Two extra rows:
   /// one for the day-of-week header and one for the month header.
   double get maxDayPickerHeight =>
-      dayPickerRowHeight * (maxDayPickerRowCount + 2);
+      dayPickerRowHeight * (maxDayPickerRowCount + 1);
 
   /// Creates layout settings for the date picker.
   ///
